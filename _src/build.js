@@ -1,22 +1,15 @@
-// Сборка сайта: _src/pages/*.html + общая шапка и подвал → *.html в корне репозитория.
+// Сборка сайта на двух языках:
+//   _src/pages/*.html     → *.html в корне (русская версия)
+//   _src/pages/kk/*.html  → kk/*.html (казахская версия)
+// Шапка, меню, подвал и переключатель языка ҚАЗ / РУС подставляются здесь.
 // Запуск: node _src/build.js
 // В первой строке каждой страницы — JSON с метаданными: <!-- {"title": "...", "description": "...", "nav": "parents"} -->
+// В страницах доступны подстановки: {{icon:имя}} — линейная иконка, {{root}} — путь к корню сайта ('' или '../').
 
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const PAGES = path.join(__dirname, 'pages');
-
-const NAV = [
-	['students', 'students.html', 'Школьникам'],
-	['parents', 'parents.html', 'Родителям'],
-	['abroad', 'abroad.html', 'Учёба за рубежом'],
-	['teachers', 'teachers.html', 'Учителям'],
-	['schools', 'schools.html', 'Школам'],
-	['about', 'about.html', 'О нас'],
-	['contacts', 'contacts.html', 'Контакты'],
-];
 
 // Линейные иконки (24×24, обводка currentColor). В страницах: {{icon:имя}}
 const ICONS = {
@@ -47,61 +40,125 @@ const icon = (name) => {
 	return `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name]}</svg>`;
 };
 
-const logo = (cls = '') => `<a href="index.html" class="logo ${cls}" aria-label="talim.pro — на главную"><b>tal<span class="i">ı</span>m</b><span class="pro">.pro</span></a>`;
+// Тексты общей части сайта на каждом языке
+const LANGS = {
+	ru: {
+		src: path.join(__dirname, 'pages'),
+		out: ROOT,
+		root: '',
+		nav: ['Школьникам', 'Родителям', 'Учёба за рубежом', 'Учителям', 'Школам', 'О нас', 'Контакты'],
+		menu: 'Основное меню',
+		home: 'talim.pro — на главную',
+		cta: 'Тегін тест',
+		tagline: 'Өзіңе сай мамандығыңды табуға көмектесеміз. Профориентация для школьников, родителей и педагогов по всему Казахстану.',
+		f1: ['Услуги', 'Бесплатный профтест', 'Консультация и план поступления', 'Каникулярный интенсив', 'Учёба за рубежом'],
+		f2: ['Педагогам и школам', 'Курс «Профориентация в школе»', 'Книги для учителей', 'Профориентационный урок для класса'],
+		f3: ['Связаться', 'Все контакты'],
+		waFooter: 'Сәлеметсіз бе! Хочу узнать подробнее об услугах talim.pro',
+		waFloat: 'Сәлеметсіз бе! Пишу с сайта talim.pro',
+		waLabel: 'Написать в WhatsApp',
+		company: '© 2026 ТОО «Talim.Pro». talim.pro',
+		langs: 'Обучение на казахском и русском языках',
+	},
+	kk: {
+		src: path.join(__dirname, 'pages', 'kk'),
+		out: path.join(ROOT, 'kk'),
+		root: '../',
+		nav: ['Оқушыларға', 'Ата-аналарға', 'Шетелде оқу', 'Мұғалімдерге', 'Мектептерге', 'Біз туралы', 'Байланыс'],
+		menu: 'Негізгі мәзір',
+		home: 'talim.pro — басты бетке',
+		cta: 'Тегін тест',
+		tagline: 'Өзіңе сай мамандығыңды табуға көмектесеміз. Қазақстан бойынша оқушыларға, ата-аналарға және педагогтерге кәсіптік бағдар.',
+		f1: ['Қызметтер', 'Тегін кәсіби тест', 'Кеңес және түсу жоспары', 'Каникулдағы интенсив', 'Шетелде оқу'],
+		f2: ['Педагогтер мен мектептерге', '«Мектептегі кәсіптік бағдар» курсы', 'Мұғалімдерге арналған кітаптар', 'Сыныпқа кәсіптік бағдар сабағы'],
+		f3: ['Байланыс', 'Барлық байланыстар'],
+		waFooter: 'Сәлеметсіз бе! talim.pro қызметтері туралы толығырақ білгім келеді',
+		waFloat: 'Сәлеметсіз бе! talim.pro сайтынан жазып отырмын',
+		waLabel: 'WhatsApp-қа жазу',
+		company: '© 2026 «Talim.Pro» ЖШС. talim.pro',
+		langs: 'Қазақ және орыс тілдерінде оқыту',
+	},
+};
 
-const header = (active) => `
+const NAV_KEYS = [
+	['students', 'students.html'],
+	['parents', 'parents.html'],
+	['abroad', 'abroad.html'],
+	['teachers', 'teachers.html'],
+	['schools', 'schools.html'],
+	['about', 'about.html'],
+	['contacts', 'contacts.html'],
+];
+
+const logo = (t, cls = '') => `<a href="index.html" class="logo ${cls}" aria-label="${t.home}"><b>tal<span class="i">ı</span>m</b><span class="pro">.pro</span></a>`;
+
+// Ссылка на ту же страницу на другом языке
+const langSwitch = (lang, file) => {
+	const kkHref = lang === 'kk' ? file : `kk/${file}`;
+	const ruHref = lang === 'ru' ? file : `../${file}`;
+	return `<div class="site-lang" role="group" aria-label="Тіл / Язык">` +
+		`<a href="${kkHref}" hreflang="kk" lang="kk"${lang === 'kk' ? ' class="on" aria-current="true"' : ''}>ҚАЗ</a>` +
+		`<a href="${ruHref}" hreflang="ru" lang="ru"${lang === 'ru' ? ' class="on" aria-current="true"' : ''}>РУС</a></div>`;
+};
+
+const header = (t, lang, file, active) => `
 <header class="header">
 	<div class="wrap">
-		${logo()}
-		<nav class="nav" aria-label="Основное меню">
-			${NAV.map(([key, href, label]) => `<a href="${href}"${key === active ? ' class="active"' : ''}>${label}</a>`).join('\n\t\t\t')}
+		${logo(t)}
+		<nav class="nav" aria-label="${t.menu}">
+			${NAV_KEYS.map(([key, href], i) => `<a href="${href}"${key === active ? ' class="active"' : ''}>${t.nav[i]}</a>`).join('\n\t\t\t')}
 		</nav>
 		<div class="header-cta">
-			<a href="test.html" class="btn btn-orange btn-sm">Тегін тест</a>
-			<button class="burger" aria-label="Меню" aria-expanded="false"><span></span></button>
+			${langSwitch(lang, file)}
+			<a href="test.html" class="btn btn-orange btn-sm">${t.cta}</a>
+			<button class="burger" aria-label="${t.menu}" aria-expanded="false"><span></span></button>
 		</div>
 	</div>
 </header>`;
 
-const footer = `
+const footer = (t) => `
 <footer class="footer">
 	<div class="wrap">
 		<div class="cols">
 			<div>
-				${logo('logo-white')}
-				<p class="tagline">Өзіңе сай мамандығыңды табуға көмектесеміз. Профориентация для школьников, родителей и педагогов по всему Казахстану.</p>
+				${logo(t, 'logo-white')}
+				<p class="tagline">${t.tagline}</p>
 			</div>
 			<div>
-				<h4>Услуги</h4>
-				<a href="test.html">Бесплатный профтест</a>
-				<a href="parents.html#consult">Консультация и план поступления</a>
-				<a href="students.html#intensive">Каникулярный интенсив</a>
-				<a href="abroad.html">Учёба за рубежом</a>
+				<h4>${t.f1[0]}</h4>
+				<a href="test.html">${t.f1[1]}</a>
+				<a href="parents.html#consult">${t.f1[2]}</a>
+				<a href="students.html#intensive">${t.f1[3]}</a>
+				<a href="abroad.html">${t.f1[4]}</a>
 			</div>
 			<div>
-				<h4>Педагогам и школам</h4>
-				<a href="teachers.html">Курс «Профориентация в школе»</a>
-				<a href="teachers.html#books">Книги для учителей</a>
-				<a href="schools.html">Профориентационный урок для класса</a>
+				<h4>${t.f2[0]}</h4>
+				<a href="teachers.html">${t.f2[1]}</a>
+				<a href="teachers.html#books">${t.f2[2]}</a>
+				<a href="schools.html">${t.f2[3]}</a>
 			</div>
 			<div>
-				<h4>Связаться</h4>
-				<a href="#" data-wa="Сәлеметсіз бе! Хочу узнать подробнее об услугах talim.pro">WhatsApp</a>
+				<h4>${t.f3[0]}</h4>
+				<a href="#" data-wa="${t.waFooter}">WhatsApp</a>
 				<a href="https://www.instagram.com/talim.pro/" target="_blank" rel="noopener">Instagram @talim.pro</a>
 				<a href="https://www.threads.net/@talim.pro" target="_blank" rel="noopener">Threads @talim.pro</a>
-				<a href="contacts.html">Все контакты</a>
+				<a href="contacts.html">${t.f3[1]}</a>
 			</div>
 		</div>
 		<div class="bottom">
-			<span>© 2026 ТОО «Talim.Pro». talim.pro</span>
-			<span>Обучение на казахском и русском языках</span>
+			<span>${t.company}</span>
+			<span>${t.langs}</span>
 		</div>
 	</div>
 </footer>
-<a class="wa-float" href="#" data-wa="Сәлеметсіз бе! Пишу с сайта talim.pro" aria-label="Написать в WhatsApp"></a>`;
+<a class="wa-float" href="#" data-wa="${t.waFloat}" aria-label="${t.waLabel}"></a>`;
 
-const layout = (meta, body) => `<!doctype html>
-<html lang="ru">
+const layout = (t, lang, file, meta, body) => {
+	const r = t.root;
+	const ruUrl = lang === 'ru' ? file : `../${file}`;
+	const kkUrl = lang === 'kk' ? file : `kk/${file}`;
+	return `<!doctype html>
+<html lang="${lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -111,31 +168,47 @@ const layout = (meta, body) => `<!doctype html>
 <meta property="og:title" content="${meta.title}">
 <meta property="og:description" content="${meta.description}">
 <meta property="og:type" content="website">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:locale" content="${lang === 'kk' ? 'kk_KZ' : 'ru_RU'}">
+<link rel="alternate" hreflang="ru" href="${ruUrl}">
+<link rel="alternate" hreflang="kk" href="${kkUrl}">
+<link rel="icon" href="${r}assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="${r}assets/css/site.css">
 </head>
 <body>
-${header(meta.nav)}
+${header(t, lang, file, meta.nav)}
 <main>
 ${body.trim()}
 </main>
-${footer}
-<script src="assets/js/site.js"></script>
-${(meta.scripts || []).map((s) => `<script src="assets/js/${s}"></script>`).join('\n')}
+${footer(t)}
+<script src="${r}assets/js/site.js"></script>
+${(meta.scripts || []).map((s) => `<script src="${r}assets/js/${s}"></script>`).join('\n')}
 </body>
 </html>
 `;
+};
+
+const list = (dir) => fs.readdirSync(dir).filter((f) => f.endsWith('.html')).sort();
+const ruFiles = list(LANGS.ru.src);
+const kkFiles = list(LANGS.kk.src);
+const missing = ruFiles.filter((f) => !kkFiles.includes(f)).concat(kkFiles.filter((f) => !ruFiles.includes(f)));
+if (missing.length) throw new Error(`Нет пары на другом языке: ${missing.join(', ')}`);
 
 let count = 0;
-for (const file of fs.readdirSync(PAGES).filter((f) => f.endsWith('.html'))) {
-	const src = fs.readFileSync(path.join(PAGES, file), 'utf8');
-	const m = src.match(/^<!--\s*(\{[\s\S]*?\})\s*-->/);
-	if (!m) throw new Error(`${file}: нет метаданных в первой строке`);
-	const meta = JSON.parse(m[1]);
-	fs.writeFileSync(path.join(ROOT, file), layout(meta, src.slice(m[0].length).replace(/\{\{icon:([a-z]+)\}\}/g, (_, n) => icon(n))));
-	count++;
+for (const [lang, t] of Object.entries(LANGS)) {
+	fs.mkdirSync(t.out, { recursive: true });
+	for (const file of list(t.src)) {
+		const src = fs.readFileSync(path.join(t.src, file), 'utf8');
+		const m = src.match(/^<!--\s*(\{[\s\S]*?\})\s*-->/);
+		if (!m) throw new Error(`${lang}/${file}: нет метаданных в первой строке`);
+		const meta = JSON.parse(m[1]);
+		const body = src.slice(m[0].length)
+			.replace(/\{\{icon:([a-z]+)\}\}/g, (_, n) => icon(n))
+			.replace(/\{\{root\}\}/g, t.root);
+		fs.writeFileSync(path.join(t.out, file), layout(t, lang, file, meta, body));
+		count++;
+	}
 }
 console.log(`Собрано страниц: ${count}`);

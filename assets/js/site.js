@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
 			var data = new FormData(form);
-			var lines = ['Сәлеметсіз бе! Заявка с сайта talim.pro'];
+			var lines = [document.documentElement.lang === 'kk' ? 'Сәлеметсіз бе! talim.pro сайтынан өтінім' : 'Сәлеметсіз бе! Заявка с сайта talim.pro'];
 			data.forEach(function (value, key) {
 				if (value && key !== 'consent') {
 					var label = form.querySelector('[name="' + key + '"]').getAttribute('data-label') || key;
