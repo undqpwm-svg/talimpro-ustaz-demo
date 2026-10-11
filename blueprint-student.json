@@ -14,10 +14,6 @@
   },
   "steps": [
     {
-      "step": "setSiteLanguage",
-      "language": "ru_RU"
-    },
-    {
       "step": "setSiteOptions",
       "options": {
         "tutor_wizard": "active",
@@ -27,8 +23,18 @@
     {
       "step": "installPlugin",
       "pluginData": {
-        "resource": "wordpress.org/plugins",
-        "slug": "tutor"
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/plugin/tutor.3.9.2.zip"
+      }
+    },
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/theme/astra.4.11.13.zip"
+      },
+      "options": {
+        "activate": true
       }
     },
     {
@@ -51,6 +57,10 @@
         "resource": "url",
         "url": "https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/dist/talimpro-brand.zip"
       }
+    },
+    {
+      "step": "setSiteLanguage",
+      "language": "ru_RU"
     },
     {
       "step": "mkdir",
