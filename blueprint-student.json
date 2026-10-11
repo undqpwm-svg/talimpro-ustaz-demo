@@ -1,0 +1,93 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "talim.pro/ustaz — демо",
+    "author": "talim.pro"
+  },
+  "landingPage": "/courses/proforientaciya-demo/lessons/video-urok/",
+  "preferredVersions": {
+    "php": "8.2",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "setSiteLanguage",
+      "language": "ru_RU"
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "tutor_wizard": "active",
+        "permalink_structure": "/%postname%/"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "tutor"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/dist/talim-certificates.zip"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/dist/ustaz-tutor-vimeo-progress.zip"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/dist/talimpro-brand.zip"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/uploads/talim-cert-templates"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/uploads/talim-cert-templates/certificate_bg.png",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/templates/certificate_bg.png"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/uploads/talim-cert-templates/appendix_bg.png",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/templates/appendix_bg.png"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/talim-demo-setup.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/setup.php"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/talim-demo-setup.php';"
+    },
+    {
+      "step": "login",
+      "username": "student",
+      "password": "student"
+    }
+  ]
+}
