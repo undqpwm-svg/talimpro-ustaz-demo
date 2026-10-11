@@ -3,46 +3,267 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>talim.pro/ustaz — демо</title>
+<title>talim.pro — профориентация для школьников, родителей и педагогов</title>
+<meta name="description" content="Бесплатный профориентационный тест, разбор с профориентологом, план поступления, учёба за рубежом и курсы для учителей. Онлайн по всему Казахстану, на казахском и русском.">
+<meta name="theme-color" content="#3458F1">
+<meta property="og:title" content="talim.pro — профориентация для школьников, родителей и педагогов">
+<meta property="og:description" content="Бесплатный профориентационный тест, разбор с профориентологом, план поступления, учёба за рубежом и курсы для учителей. Онлайн по всему Казахстану, на казахском и русском.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  :root { --blue:#3458F1; --orange:#F9731E; }
-  * { box-sizing: border-box; }
-  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px;
-         font-family:Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color:#fff;
-         background:linear-gradient(90deg,#4D6BFF 0%,#3458F1 100%); }
-  main { width:100%; max-width:560px; background:#fff; color:#111; border-radius:20px; padding:36px 28px; box-shadow:0 20px 50px rgba(0,0,0,.15); }
-  .badge { display:inline-block; background:#FFF0C3; color:#000; font-weight:600; font-size:13px; padding:4px 10px; border-radius:999px; }
-  h1 { font-size:28px; font-weight:800; letter-spacing:-.02em; margin:14px 0 8px; }
-  p { line-height:1.5; margin:0 0 12px; color:#333; }
-  .btns { display:grid; gap:12px; margin:24px 0 16px; }
-  a.btn { display:block; text-align:center; text-decoration:none; font-weight:600; padding:16px; border-radius:12px; color:#fff; }
-  a.student { background:var(--orange); }
-  a.admin { background:var(--blue); }
-  a.btn small { display:block; font-weight:400; opacity:.9; margin-top:4px; }
-  .note { font-size:14px; color:#5B5F6B; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
+
+<header class="header">
+	<div class="wrap">
+		<a href="index.html" class="logo " aria-label="talim.pro — на главную"><b>tal<span class="i">ı</span>m</b><span class="pro">.pro</span></a>
+		<nav class="nav" aria-label="Основное меню">
+			<a href="students.html">Школьникам</a>
+			<a href="parents.html">Родителям</a>
+			<a href="abroad.html">Учёба за рубежом</a>
+			<a href="teachers.html">Учителям</a>
+			<a href="schools.html">Школам</a>
+			<a href="about.html">О нас</a>
+			<a href="contacts.html">Контакты</a>
+		</nav>
+		<div class="header-cta">
+			<a href="test.html" class="btn btn-orange btn-sm">Тегін тест</a>
+			<button class="burger" aria-label="Меню" aria-expanded="false"><span></span></button>
+		</div>
+	</div>
+</header>
 <main>
-  <span class="badge">Демо с тестовыми данными</span>
-  <h1>talim.pro/ustaz</h1>
-  <p>Демо-копия доработок портала: контроль просмотра видеоуроков, выдача сертификатов и фирменный стиль. Курс и слушатели тестовые.</p>
+<section class="hero bg-blue">
+	<div class="wrap">
+		<div>
+			<span class="eyebrow">Өзіңе сай мамандығыңды табуға көмектесеміз</span>
+			<h1>Помогаем молодёжи найти своё призвание</h1>
+			<p class="lead">и уверенно сделать шаг в будущее. Профориентация для школьников, родителей и педагогов по всему Казахстану — онлайн, на казахском и русском.</p>
+			<div class="btn-row">
+				<a href="test.html" class="btn btn-orange">Пройти бесплатный тест</a>
+				<a href="#" class="btn btn-ghost btn-wa" data-wa="Сәлеметсіз бе! Хочу подобрать профессию для ребёнка">Написать в WhatsApp</a>
+			</div>
+			<p class="hero-note">10 минут · без регистрации · результат сразу, разбор специалиста — в WhatsApp</p>
+		</div>
+		<div class="hero-media">
+			<div class="photo ph-girl" role="img" aria-label="Школьница с планшетом показывает «класс»"></div>
+			<div class="hero-badge b1"><span class="chip">ТЕГІН</span><strong>Профтест «Кәсіби бағдар»</strong>3 подходящих направления за 10 минут</div>
+			<div class="hero-badge b2"><strong>Разбор в WhatsApp</strong>Профориентолог объяснит результат простыми словами</div>
+		</div>
+	</div>
+</section>
 
-  <div class="btns">
-    <a class="btn student" href="https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/blueprint-student.json">
-      Открыть как слушатель
-      <small>Урок с видео: кнопка «Отметить как завершенный» откроется после просмотра 90% видео</small>
-    </a>
-    <a class="btn admin" href="https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/blueprint-admin.json">
-      Открыть как администратор
-      <small>«Сертификаты» → курс «(демо)» → «Сгенерировать» → «Скачать PDF»</small>
-    </a>
-  </div>
+<section class="section-sm bg-soft">
+	<div class="wrap">
+		<div class="stats">
+			<div class="stat"><b>7 лет</b><span>помогаем с выбором профессии</span></div>
+			<div class="stat"><b>45 000+</b><span>участников по всему Казахстану</span></div>
+			<div class="stat"><b>kk / ru</b><span>консультации и материалы на двух языках</span></div>
+			<div class="stat"><b>Онлайн</b><span>из любого города, без поездок</span></div>
+		</div>
+	</div>
+</section>
 
-  <p class="note">Сайт собирается прямо в браузере — подождите около минуты после нажатия. Изменения в демо не сохраняются.</p>
+<section class="section">
+	<div class="wrap">
+		<div class="section-head center">
+			<span class="eyebrow">Для кого</span>
+			<h2>Выберите, кто вы</h2>
+			<p class="lead">У школьника, родителя и учителя разные вопросы — поэтому и помощь разная.</p>
+		</div>
+		<div class="grid g4">
+			<a class="card" href="students.html">
+				<div class="card-icon">🎒</div>
+				<h3>Школьникам</h3>
+				<p>Не понимаешь, что тебе подходит? Тест, разбор, проба профессий на каникулах.</p>
+				<span class="more">Подробнее</span>
+			</a>
+			<a class="card orange" href="parents.html">
+				<div class="card-icon">👨‍👩‍👧</div>
+				<h3>Родителям</h3>
+				<p>Ребёнок не знает, кем быть, а ЕНТ меняется. Консультация и план поступления.</p>
+				<span class="more">Подробнее</span>
+			</a>
+			<a class="card" href="teachers.html">
+				<div class="card-icon">📚</div>
+				<h3>Учителям</h3>
+				<p>Онлайн-курс «Профориентация в школе» и книги для работы с учениками.</p>
+				<span class="more">Подробнее</span>
+			</a>
+			<a class="card orange" href="schools.html">
+				<div class="card-icon">🏫</div>
+				<h3>Школам</h3>
+				<p>Профориентационный урок для 9–11 классов и обучение педагогов.</p>
+				<span class="more">Подробнее</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="section bg-blue">
+	<div class="wrap">
+		<div class="section-head center">
+			<span class="eyebrow">Как мы работаем</span>
+			<h2>Тест — это только начало</h2>
+			<p class="lead">Сам по себе тест мало что даёт. Главное — разбор специалистом и понятный план, куда и как поступать.</p>
+		</div>
+		<div class="steps">
+			<div class="step"><h3>Бесплатный тест</h3><p>10 вопросов о том, что нравится и получается. Мгновенный мини-результат.</p></div>
+			<div class="step"><h3>Разбор в WhatsApp</h3><p>Профориентолог объясняет результат и 3 подходящих направления — в течение 24 часов.</p></div>
+			<div class="step"><h3>Консультация</h3><p>Разбираем, что мешает определиться, и сверяем интересы с реальными профессиями.</p></div>
+			<div class="step"><h3>План поступления</h3><p>Вузы, баллы ЕНТ, гранты в Казахстане и за рубежом — по шагам и срокам.</p></div>
+		</div>
+		<div class="center" style="margin-top:40px"><a href="test.html" class="btn btn-orange">Начать с теста</a></div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="wrap">
+		<div class="section-head">
+			<span class="eyebrow">Услуги</span>
+			<h2>Чем мы помогаем</h2>
+		</div>
+		<div class="grid g3">
+			<a class="card feature" href="test.html">
+				<span class="tag free">Бесплатно</span>
+				<h3>Профтест «Кәсіби бағдар»</h3>
+				<p>Короткий тест на казахском или русском и 15-минутный разбор результата в WhatsApp.</p>
+				<span class="more">Пройти тест</span>
+			</a>
+			<a class="card" href="parents.html#consult">
+				<span class="tag">Родителям и выпускникам</span>
+				<h3>Консультация и план поступления</h3>
+				<p>Индивидуальная встреча с профориентологом и письменный план: направления, вузы, баллы ЕНТ, гранты.</p>
+				<span class="more">Подробнее</span>
+			</a>
+			<a class="card" href="students.html#intensive">
+				<span class="tag">На каникулах</span>
+				<h3>Онлайн-интенсив «Кәсіби бағдар»</h3>
+				<p>Несколько дней проб профессий, заданий и встреч со специалистами — осенью и зимой.</p>
+				<span class="more">Подробнее</span>
+			</a>
+			<a class="card" href="abroad.html">
+				<span class="tag">Турция · Китай</span>
+				<h3>Учёба за рубежом</h3>
+				<p>Сначала профессия, потом страна. Гранты, выбор вуза и подготовка документов.</p>
+				<span class="more">Подробнее</span>
+			</a>
+			<a class="card" href="teachers.html">
+				<span class="tag">Педагогам</span>
+				<h3>Курс «Профориентация в школе»</h3>
+				<p>Самостоятельный онлайн-курс для учителей с сертификатом. 96 700 ₸.</p>
+				<span class="more">Подробнее</span>
+			</a>
+			<a class="card" href="schools.html">
+				<span class="tag">Для школ</span>
+				<h3>Урок профориентации для класса</h3>
+				<p>Занятие для 9–11 классов: интересы, профессии, следующий шаг для каждого ученика.</p>
+				<span class="more">Подробнее</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="section bg-soft">
+	<div class="wrap split">
+		<div class="photo ph-group" role="img" aria-label="Школьники дают друг другу пять за столом"></div>
+		<div>
+			<span class="eyebrow">Почему talim.pro</span>
+			<h2>Говорим с подростками на их языке</h2>
+			<ul class="checklist">
+				<li><b>На казахском и русском.</b> Тест, разбор и консультации — на удобном языке.</li>
+				<li><b>Специалист, а не только тест.</b> Результат объясняет профориентолог и даёт следующий шаг.</li>
+				<li><b>Контекст Казахстана.</b> ЕНТ, гранты, рынок труда и востребованные профессии.</li>
+				<li><b>Онлайн по всей стране.</b> Не нужно ехать в Алматы или Астану.</li>
+			</ul>
+			<a href="about.html" class="btn btn-ghost">О компании</a>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="wrap">
+		<div class="section-head center">
+			<span class="eyebrow">Бесплатно</span>
+			<h2>Полезное без оплаты</h2>
+		</div>
+		<div class="grid g3">
+			<div class="card">
+				<div class="card-icon">🎬</div>
+				<h3>«1 минутта мамандық»</h3>
+				<p>Короткие ролики о профессиях в Instagram: чем занимается специалист, где учиться, сколько зарабатывает.</p>
+				<a class="more" href="https://www.instagram.com/talim.pro/" target="_blank" rel="noopener">Смотреть в Instagram</a>
+			</div>
+			<div class="card orange">
+				<div class="card-icon">🎙️</div>
+				<h3>Эфир «Ата-аналар жиналысы»</h3>
+				<p>Ежемесячный онлайн-эфир для родителей: изменения в ЕНТ, гранты и как поддержать ребёнка в выборе.</p>
+				<a class="more" href="#" data-wa="Сәлеметсіз бе! Хочу на эфир «Ата-аналар жиналысы»">Записаться на эфир</a>
+			</div>
+			<div class="card">
+				<div class="card-icon">✅</div>
+				<h3>Чек-лист «7 ошибок родителей»</h3>
+				<p>Самые частые ошибки при выборе профессии ребёнку — и что делать вместо них.</p>
+				<a class="more" href="#" data-wa="Сәлеметсіз бе! Пришлите чек-лист «7 ошибок родителей при выборе профессии»">Получить в WhatsApp</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section-sm">
+	<div class="wrap">
+		<div class="cta-band bg-orange">
+			<div>
+				<h2>Не знаете, с чего начать?</h2>
+				<p>Пройдите тест — профориентолог разберёт результат и подскажет следующий шаг. Это бесплатно.</p>
+			</div>
+			<div class="btn-row">
+				<a href="test.html" class="btn btn-white">Пройти тест</a>
+			</div>
+		</div>
+	</div>
+</section>
 </main>
+
+<footer class="footer">
+	<div class="wrap">
+		<div class="cols">
+			<div>
+				<a href="index.html" class="logo logo-white" aria-label="talim.pro — на главную"><b>tal<span class="i">ı</span>m</b><span class="pro">.pro</span></a>
+				<p class="tagline">Өзіңе сай мамандығыңды табуға көмектесеміз. Профориентация для школьников, родителей и педагогов по всему Казахстану.</p>
+			</div>
+			<div>
+				<h4>Услуги</h4>
+				<a href="test.html">Бесплатный профтест</a>
+				<a href="parents.html#consult">Консультация и план поступления</a>
+				<a href="students.html#intensive">Каникулярный интенсив</a>
+				<a href="abroad.html">Учёба за рубежом</a>
+			</div>
+			<div>
+				<h4>Педагогам и школам</h4>
+				<a href="teachers.html">Курс «Профориентация в школе»</a>
+				<a href="teachers.html#books">Книги для учителей</a>
+				<a href="schools.html">Профориентационный урок для класса</a>
+			</div>
+			<div>
+				<h4>Связаться</h4>
+				<a href="#" data-wa="Сәлеметсіз бе! Хочу узнать подробнее об услугах talim.pro">WhatsApp</a>
+				<a href="https://www.instagram.com/talim.pro/" target="_blank" rel="noopener">Instagram @talim.pro</a>
+				<a href="https://www.threads.net/@talim.pro" target="_blank" rel="noopener">Threads @talim.pro</a>
+				<a href="contacts.html">Все контакты</a>
+			</div>
+		</div>
+		<div class="bottom">
+			<span>© 2026 ТОО «Talim.Pro». talim.pro</span>
+			<span>Обучение на казахском и русском языках</span>
+		</div>
+	</div>
+</footer>
+<a class="wa-float" href="#" data-wa="Сәлеметсіз бе! Пишу с сайта talim.pro" aria-label="Написать в WhatsApp"></a>
+<script src="assets/js/site.js"></script>
+
 </body>
 </html>
