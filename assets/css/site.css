@@ -25,6 +25,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 88px; }
 body {
 	margin: 0;
 	font-family: var(--font);
@@ -92,7 +93,7 @@ ul { padding-left: 1.2em; }
 .btn-white:hover { color: var(--blue-600); }
 .btn-ghost { border-color: currentColor; color: var(--blue); background: transparent; }
 .bg-blue .btn-ghost, .bg-orange .btn-ghost { color: var(--white); }
-.btn-wa::before { content: ""; width: 18px; height: 18px; background: currentColor; -webkit-mask: url("../img/wa.svg") center/contain no-repeat; mask: url("../img/wa.svg") center/contain no-repeat; }
+.btn-wa::before { content: ""; flex-shrink: 0; width: 18px; height: 18px; background: currentColor; -webkit-mask: url("../img/wa.svg") center/contain no-repeat; mask: url("../img/wa.svg") center/contain no-repeat; }
 .btn-sm { padding: 12px 18px; font-size: 15px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 .center .btn-row { justify-content: center; }
@@ -180,6 +181,8 @@ a.card:hover { box-shadow: var(--shadow); transform: translateY(-3px); color: va
 .bg-blue .step h3 { color: var(--white); }
 .bg-blue .step p { color: rgba(255,255,255,.85); }
 .bg-blue .step::before { background: var(--white); color: var(--blue); }
+.steps.s1 { grid-template-columns: 1fr; }
+.steps.s2 { grid-template-columns: repeat(2, 1fr); }
 
 /* ---------- Две колонки ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -300,7 +303,7 @@ a.card:hover { box-shadow: var(--shadow); transform: translateY(-3px); color: va
 	.header-cta .btn { display: none; }
 }
 @media (max-width: 560px) {
-	.g4, .steps, .stats, .footer .cols, .form .row { grid-template-columns: 1fr; }
+	.g4, .steps, .steps.s2, .stats, .footer .cols, .form .row { grid-template-columns: 1fr; }
 	.quiz { padding: 24px 18px; border-radius: 20px; }
 	.q-title { font-size: 21px; }
 	.lead { font-size: 18px; }
