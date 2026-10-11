@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>talim.pro/ustaz — демо</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --blue:#3458F1; --orange:#F9731E; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px;
+         font-family:Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color:#fff;
+         background:linear-gradient(90deg,#4D6BFF 0%,#3458F1 100%); }
+  main { width:100%; max-width:560px; background:#fff; color:#111; border-radius:20px; padding:36px 28px; box-shadow:0 20px 50px rgba(0,0,0,.15); }
+  .badge { display:inline-block; background:#FFF0C3; color:#000; font-weight:600; font-size:13px; padding:4px 10px; border-radius:999px; }
+  h1 { font-size:28px; font-weight:800; letter-spacing:-.02em; margin:14px 0 8px; }
+  p { line-height:1.5; margin:0 0 12px; color:#333; }
+  .btns { display:grid; gap:12px; margin:24px 0 16px; }
+  a.btn { display:block; text-align:center; text-decoration:none; font-weight:600; padding:16px; border-radius:12px; color:#fff; }
+  a.student { background:var(--orange); }
+  a.admin { background:var(--blue); }
+  a.btn small { display:block; font-weight:400; opacity:.9; margin-top:4px; }
+  .note { font-size:14px; color:#5B5F6B; }
+</style>
+</head>
+<body>
+<main>
+  <span class="badge">Демо с тестовыми данными</span>
+  <h1>talim.pro/ustaz</h1>
+  <p>Демо-копия доработок портала: контроль просмотра видеоуроков, выдача сертификатов и фирменный стиль. Курс и слушатели тестовые.</p>
+
+  <div class="btns">
+    <a class="btn student" href="https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/blueprint-student.json">
+      Открыть как слушатель
+      <small>Урок с видео: кнопка «Отметить как завершенный» откроется после просмотра 90% видео</small>
+    </a>
+    <a class="btn admin" href="https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/undqpwm-svg/talimpro-ustaz-demo/main/blueprint-admin.json">
+      Открыть как администратор
+      <small>«Сертификаты» → курс «(демо)» → «Сгенерировать» → «Скачать PDF»</small>
+    </a>
+  </div>
+
+  <p class="note">Сайт собирается прямо в браузере — подождите около минуты после нажатия. Изменения в демо не сохраняются.</p>
+</main>
+</body>
+</html>
