@@ -48,7 +48,8 @@ ul { padding-left: 1.2em; }
 .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
 .section { padding: 88px 0; }
 .section-sm { padding: 56px 0; }
-.bg-soft { background: var(--bg-soft); }
+/* Чередующиеся разделы — белые, отделены тонкой линией */
+.bg-soft { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .bg-blue { background: var(--grad-blue); color: var(--white); }
 .bg-blue h1, .bg-blue h2, .bg-blue h3 { color: var(--white); }
 .bg-orange { background: var(--grad-orange); color: var(--white); }
@@ -206,7 +207,7 @@ a.card:hover { box-shadow: var(--shadow); transform: translateY(-3px); color: va
 .checklist li { position: relative; padding-left: 34px; margin-bottom: 12px; }
 .checklist li::before { content: ""; position: absolute; left: 0; top: 3px; width: 22px; height: 22px; border-radius: 50%; background: var(--blue-50) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%233458F1' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat; }
 .checklist.minus li::before { background: #F1F2F6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12h10' fill='none' stroke='%235B5F6B' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat; }
-.note { background: var(--bg-soft); border-left: 4px solid var(--orange); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--muted); font-size: 15px; }
+.note { background: var(--orange-50); border-left: 4px solid var(--orange); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--muted); font-size: 15px; }
 
 /* ---------- Цена (блок) ---------- */
 .pricing { display: grid; grid-template-columns: 1.2fr .8fr; gap: 0; border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
