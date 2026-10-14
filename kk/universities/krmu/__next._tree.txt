@@ -1,8 +1,0 @@
-:HL["/talimpro-ustaz-demo/_next/static/chunks/3mf19squagv3g.css","style"]
-:HL["/talimpro-ustaz-demo/_next/static/chunks/3tvf5kfab-uq2.css","style"]
-:HL["/talimpro-ustaz-demo/_next/static/media/4e1c87b7aa9e2f2f-s.p.3o02-8iknf6dl.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/talimpro-ustaz-demo/_next/static/media/75f2fdf2e0b68dfe-s.p.0fq57cj8krwmf.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/talimpro-ustaz-demo/_next/static/media/b4a06a523f527a0e-s.p.3psl0_mnhzy2y.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/talimpro-ustaz-demo/_next/static/media/b59689b1142d37ce-s.p.1bk8_xp319hr4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/talimpro-ustaz-demo/_next/static/media/cfdfbee4d6cf0a93-s.p.1jwcpm6w583_v.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"lang","param":{"type":"d","key":"kk","siblings":[]},"prefetchHints":4144,"slots":{"children":{"name":"universities","param":null,"prefetchHints":4160,"slots":{"children":{"name":"slug","param":{"type":"d","key":"krmu","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}},"staleTime":300,"buildId":"xgSZ42_VlRS2RmP3Vb1Ii"}

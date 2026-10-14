@@ -1,2 +1,2 @@
-:HL["/talimpro-ustaz-demo/_next/static/chunks/3tvf5kfab-uq2.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"xgSZ42_VlRS2RmP3Vb1Ii"}
+:HL["/talimpro-ustaz-demo/_next/static/chunks/3ilb9341n5u27.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"o-WQH0FkhCnItbHhJ5msn"}
